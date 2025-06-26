@@ -8,11 +8,8 @@ st.set_page_config(page_title="Monitoramento Sphenophorus", layout="wide")
 st.title("📊 Monitoramento de Sphenophorus")
 
 # Carregar dados
-df = pd.read_excel(
-    './data/Base de levantamento Sphenophorus.xlsx',
-    sheet_name='Ficha de campo_Sphenophorus',
-    header=1
-)
+df = pd.read_excel('C:/Users/fatbr/OneDrive/Documents/GitHub/projeto_sphenophorus/data/Base de levantamento Sphenophorus.xlsx', sheet_name='Ficha de campo_Sphenophorus', header=1)
+
 
 colunas_uso = [
     'Cod_Cliente', 'Nome_Cliente', 'Fazenda', 'Data_Avaliacao',
@@ -50,7 +47,7 @@ col4.metric("Densidade Populacional Média", f"{df_filtrado['Densidade_Populacio
 
 # Botões de exportação
 st.sidebar.markdown("---")
-st.sidebar.subheader("📤 Exportar Dados")
+st.sidebar.subheader("📄 Exportar Dados")
 
 # Exportar CSV
 df_csv = df_filtrado.to_csv(index=False).encode('utf-8')
@@ -67,7 +64,7 @@ with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
     df_filtrado.to_excel(writer, index=False, sheet_name='Filtrado')
     writer.close()
     st.sidebar.download_button(
-        label="📊 Baixar Excel",
+        label="📈 Baixar Excel",
         data=output.getvalue(),
         file_name='dados_filtrados.xlsx',
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
@@ -114,9 +111,10 @@ else:
                 cols = st.columns(3)
                 for i, foto_col in enumerate(['Foto_1', 'Foto_2', 'Foto_3']):
                     if pd.notna(row[foto_col]):
-                        foto_path = str(row[foto_col]).strip()
+                        nome_arquivo = str(row[foto_col]).strip()
+                        foto_path = os.path.join("fotos_sphenophorus", nome_arquivo)
                         info_col = f"Info_{foto_col}"
-                        if foto_path.startswith("http") or os.path.exists(foto_path):
+                        if os.path.exists(foto_path) or foto_path.startswith("http"):
                             with cols[i]:
                                 st.image(foto_path, caption=row.get(info_col, ""), use_container_width=True)
                         else:
