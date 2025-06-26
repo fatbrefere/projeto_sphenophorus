@@ -1,0 +1,134 @@
+# DOCUMENTAÇÃO DO PROJETO - LEVANTAMENTO SPHENOPHORUS
+
+## ✅ ETAPA 1 - ESTRUTURA DE PASTAS
+Crie a seguinte estrutura de diretórios no seu projeto:
+
+```
+projeto_sphenophorus/
+│
+├── dados/
+│   └── Base de levantamento Sphenophorus.xlsx
+│
+├── graficos/
+│   └── (as imagens serão salvas aqui)
+│
+├── scripts/
+│   ├── kpi_1_densidade.py
+│   ├── kpi_2_toco_atacado.py
+│   └── kpi_3_infestacao.py
+│
+├── requirements.txt
+└── main.py
+```
+
+---
+
+## ✅ ETAPA 2 - CRIAÇÃO DO AMBIENTE VIRTUAL
+No terminal, dentro da pasta do projeto:
+
+```bash
+python -m venv .venv
+```
+
+Ative o ambiente virtual:
+- **Windows PowerShell:**
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+- **CMD:**
+```cmd
+.\.venv\Scripts\activate.bat
+```
+
+---
+
+## ✅ ETAPA 3 - CRIAÇÃO DO ARQUIVO requirements.txt
+Crie um arquivo chamado `requirements.txt` com o seguinte conteúdo:
+
+```
+pandas
+matplotlib
+seaborn
+openpyxl
+```
+
+Instale as dependências no ambiente virtual com um dos comandos abaixo:
+
+- **Forma direta no PowerShell:**
+```powershell
+& "C:\Users\fatbr\OneDrive - brefere.com.br\01_P.A.R.A\01.Projetos\projeto_sphenophorus\.venv\Scripts\python.exe" -m pip install -r requirements.txt
+```
+
+- **Ou após ativar o ambiente:**
+```powershell
+pip install -r requirements.txt
+```
+
+---
+
+## ✅ ETAPA 4 - CRIAÇÃO DO SCRIPT KPI 1 (Densidade Populacional)
+Crie o arquivo `scripts/kpi_1_densidade.py` com o código do primeiro gráfico.
+
+Execute o script com:
+```powershell
+python ./scripts/kpi_1_densidade.py
+```
+
+A imagem será salva em `./graficos/densidade_populacional.png`
+
+---
+
+## ✅ ETAPA 5 - CRIAÇÃO DO SCRIPT KPI 2 (Índice de Toco Atacado)
+Crie o arquivo `scripts/kpi_2_toco_atacado.py` com o código do segundo gráfico.
+
+Execute o script com:
+```powershell
+python ./scripts/kpi_2_toco_atacado.py
+```
+
+A imagem será salva em `./graficos/indice_toco_atacado.png`
+
+---
+
+## ✅ ETAPA 6 - CRIAÇÃO DO SCRIPT KPI 3 (Infestação por Data e Tratamento)
+Crie o arquivo `scripts/kpi_3_infestacao.py` com o gráfico de linhas da infestação.
+
+Execute o script com:
+```powershell
+python ./scripts/kpi_3_infestacao.py
+```
+
+A imagem será salva em `./graficos/indice_infestacao.png`
+
+---
+
+## ✅ ETAPA 7 - EXECUÇÃO COMPLETA COM main.py
+Crie o arquivo `main.py` com o seguinte conteúdo:
+
+```python
+import subprocess
+
+scripts = [
+    'scripts/kpi_1_densidade.py',
+    'scripts/kpi_2_toco_atacado.py',
+    'scripts/kpi_3_infestacao.py'
+]
+
+for script in scripts:
+    print(f"Executando: {script}")
+    subprocess.run(['python', script], check=True)
+
+print("\n✅ Todos os gráficos foram gerados com sucesso!")
+```
+
+Execute com:
+```powershell
+python main.py
+```
+
+---
+
+## 🔜 PRÓXIMO PASSO: TRANSFORMAR EM DASHBOARD COM STREAMLIT
+Em seguida, será criado um app interativo com filtros para visualização dinâmica dos KPIs.
+
+Acompanhe a próxima etapa nesta documentação...
