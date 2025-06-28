@@ -11,6 +11,7 @@ st.title("📊 Monitoramento de Sphenophorus")
 df = pd.read_excel('./data/Base de levantamento Sphenophorus.xlsx', sheet_name='Ficha de campo_Sphenophorus', header=1)
 
 
+
 colunas_uso = [
     'Cod_Cliente', 'Nome_Cliente', 'Fazenda', 'Data_Avaliacao',
     'Tratamento', 'Densidade_Populacional', 'Tocos_Analisados',
