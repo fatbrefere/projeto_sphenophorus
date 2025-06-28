@@ -8,7 +8,7 @@ st.set_page_config(page_title="Monitoramento Sphenophorus", layout="wide")
 st.title("📊 Monitoramento de Sphenophorus")
 
 # Carregar dados
-df = pd.read_excel('C:/Users/fatbr/OneDrive/Documents/GitHub/projeto_sphenophorus/data/Base de levantamento Sphenophorus.xlsx', sheet_name='Ficha de campo_Sphenophorus', header=1)
+df = pd.read_excel('./data/Base de levantamento Sphenophorus.xlsx', sheet_name='Ficha de campo_Sphenophorus', header=1)
 
 
 colunas_uso = [
